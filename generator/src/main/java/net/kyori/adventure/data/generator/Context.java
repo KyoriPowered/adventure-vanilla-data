@@ -49,7 +49,10 @@ final class Context {
    * @throws IOException if thrown by javapoet
    */
   public void write(final TypeSpec spec) throws IOException {
-    final var file = JavaFile.builder(this.packageBase, spec).build();
+    final var file = JavaFile.builder(this.packageBase, spec)
+      .skipJavaLangImports(true)
+      .build();
+
     file.writeTo(this.outputDirectory, StandardCharsets.UTF_8);
   }
 }
