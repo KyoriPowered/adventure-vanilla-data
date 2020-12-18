@@ -1,5 +1,5 @@
 /*
- * This file is part of adventure, licensed under the MIT License.
+ * This file is part of adventure-vanilla-data, licensed under the MIT License.
  *
  * Copyright (c) 2017-2020 KyoriPowered
  *
@@ -65,12 +65,12 @@ public final class GameDataGenerator {
       new RegistryEntriesGenerator<>("VanillaItems",
         Registry.ITEM,
         """
-               Item types present in <em>Minecraft: Java Edition</em> $L.
-               
-               <p>This list does not include items that have a block associated.</p>
-               
-               @see VanillaBlocks for block items
-               """,
+          Item types present in <em>Minecraft: Java Edition</em> $L.
+          
+          <p>This list does not include items that have a block associated.</p>
+          
+          @see VanillaBlocks for block items
+          """,
         Item::getDescriptionId,
         it -> !(it instanceof BlockItem)),
       new RegistryEntriesGenerator<>("VanillaEntities",

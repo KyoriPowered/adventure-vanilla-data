@@ -1,5 +1,5 @@
 /*
- * This file is part of adventure, licensed under the MIT License.
+ * This file is part of adventure-vanilla-data, licensed under the MIT License.
  *
  * Copyright (c) 2017-2020 KyoriPowered
  *
@@ -37,12 +37,12 @@ final class Types {
   /**
    * {@code KeyedAndNamedImpl(String idKey, String translationKey)}.
    */
-  public static final TypeName KEYED_NAMED_HOLDER = ClassName.get("net.kyori.adventure.data", "KeyedAndNamed");
+  public static final TypeName KEYED_NAMED_HOLDER = ClassName.get(Context.BASE_PACKAGE, "KeyedAndNamed");
 
   /**
    * {@code KeyedAndNamedImpl(String idKey, String translationKey)}.
    */
-  public static final TypeName KEYED_NAMED_HOLDER_IMPL = ClassName.get("net.kyori.adventure.data", "KeyedAndNamedImpl");
+  public static final TypeName KEYED_NAMED_HOLDER_IMPL = ClassName.get(Context.BASE_PACKAGE, "KeyedAndNamedImpl");
 
   private Types() {
   }

@@ -1,5 +1,5 @@
 /*
- * This file is part of adventure, licensed under the MIT License.
+ * This file is part of adventure-vanilla-data, licensed under the MIT License.
  *
  * Copyright (c) 2017-2020 KyoriPowered
  *
@@ -21,16 +21,32 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package net.kyori.adventure.data;
+package net.kyori.adventure.data.vanilla;
 
-import net.kyori.adventure.key.Keyed;
-import net.kyori.adventure.text.ComponentLike;
+import net.kyori.adventure.key.Key;
+import net.kyori.adventure.text.Component;
+import org.checkerframework.checker.nullness.qual.NonNull;
 
-/**
- * A value that has both a {@link net.kyori.adventure.key.Key} and a {@link net.kyori.adventure.text.Component name}.
- *
- * @since 1.0.0
- */
-public interface KeyedAndNamed extends Keyed, ComponentLike {
+final class KeyedAndNamedImpl implements KeyedAndNamed {
+  private final Key key;
+  private final Component name;
 
+  KeyedAndNamedImpl(final Key key, final Component name) {
+    this.key = key;
+    this.name = name;
+  }
+
+  KeyedAndNamedImpl(final String key, final String translationKey) {
+    this(Key.key(key), Component.translatable(translationKey));
+  }
+
+  @Override
+  public @NonNull Key key() {
+    return this.key;
+  }
+
+  @Override
+  public @NonNull Component asComponent() {
+    return this.name;
+  }
 }

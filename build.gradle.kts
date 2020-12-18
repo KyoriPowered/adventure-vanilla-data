@@ -1,5 +1,6 @@
 plugins {
   id("net.kyori.indra")
+  id("net.kyori.indra.publishing")
   id("fabric-loom") apply false // use the extension to make our hacky repository business less hacky
 }
 
@@ -16,6 +17,13 @@ allprojects {
   repositories {
     mavenCentral()
   }
+}
+
+indra {
+  github("KyoriPowered", "adventure-vanilla-data") {
+    ci = true
+  }
+  mitLicense()
 }
 
 // We have to include repos from the generator project, since we don't do central declaration yet :/
@@ -43,9 +51,9 @@ repositories {
     dir(loom.remappedModCache)
   }
 
+  // from MinecraftMappedProvider.addDependencies
   flatDir {
     name = "minecraftMapped"
-    // from MinecraftMappedProvider.addDependencies
     dir(loom.userCache.resolve("$minecraftVersion-mapped-net.minecraft.mappings-$minecraftVersion-v2"))
   }
 }

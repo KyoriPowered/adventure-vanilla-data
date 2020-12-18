@@ -12,10 +12,11 @@ pluginManagement {
     id("net.kyori.indra.license-header") version indraVersion
     id("net.kyori.indra.checkstyle") version indraVersion
     id("net.kyori.indra.publishing") version indraVersion
+    id("net.kyori.indra.publishing.sonatype") version indraVersion
     id("fabric-loom") version "0.5-SNAPSHOT"
   }
 }
 
-rootProject.name = "adventure-data"
+rootProject.name = "adventure-vanilla-data"
 
 include("generator")

@@ -1,4 +1,4 @@
-# adventure-data
+# adventure-vanilla-data
 
 Generated holders of data useful in Adventure with the contents of registries exposed in Vanilla *Minecraft: Java Edition*.
 

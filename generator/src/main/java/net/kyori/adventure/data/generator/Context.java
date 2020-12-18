@@ -1,5 +1,5 @@
 /*
- * This file is part of adventure, licensed under the MIT License.
+ * This file is part of adventure-vanilla-data, licensed under the MIT License.
  *
  * Copyright (c) 2017-2020 KyoriPowered
  *
@@ -31,7 +31,7 @@ import java.nio.file.Path;
 import net.minecraft.SharedConstants;
 
 final class Context {
-  private final String packageBase = "net.kyori.adventure.data";
+  static final String BASE_PACKAGE = "net.kyori.adventure.data.vanilla";
   private final Path outputDirectory;
 
   Context(final Path outputDirectory) {
@@ -49,7 +49,7 @@ final class Context {
    * @throws IOException if thrown by javapoet
    */
   public void write(final TypeSpec spec) throws IOException {
-    final var file = JavaFile.builder(this.packageBase, spec)
+    final var file = JavaFile.builder(BASE_PACKAGE, spec)
       .skipJavaLangImports(true)
       .build();
 
