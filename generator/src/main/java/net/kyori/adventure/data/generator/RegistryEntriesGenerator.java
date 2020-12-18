@@ -23,14 +23,12 @@
  */
 package net.kyori.adventure.data.generator;
 
-import com.google.common.html.HtmlEscapers;
 import com.squareup.javapoet.FieldSpec;
 import java.io.IOException;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import javax.lang.model.element.Modifier;
 import net.minecraft.SharedConstants;
-import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 

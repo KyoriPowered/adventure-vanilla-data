@@ -23,7 +23,6 @@
  */
 package net.kyori.adventure.data.generator;
 
-import com.google.common.html.HtmlEscapers;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import com.squareup.javapoet.FieldSpec;
