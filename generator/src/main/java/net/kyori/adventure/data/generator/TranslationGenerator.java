@@ -32,7 +32,7 @@ import java.nio.charset.StandardCharsets;
 import javax.lang.model.element.Modifier;
 import net.minecraft.locale.Language;
 
-public class LocalizationGenerator implements Generator {
+public class TranslationGenerator implements Generator {
 
   @Override
   public String name() {

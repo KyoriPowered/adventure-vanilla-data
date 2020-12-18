@@ -57,7 +57,7 @@ public final class GameDataGenerator {
 
     // Prepare a set of generators
     final var generators = List.of(
-      // new LocalizationGenerator(), // This creates a 33k-line source file that is a large fraction of the output jar... let's expose different things instead.
+      // new TranslationGenerator(), // This creates a 33k-line source file that is a large fraction of the output jar... let's expose different things instead.
       new RegistryEntriesGenerator<>("VanillaBlocks",
         Registry.BLOCK,
         "Block types present in <em>Minecraft: Java Edition</em> $L.",
