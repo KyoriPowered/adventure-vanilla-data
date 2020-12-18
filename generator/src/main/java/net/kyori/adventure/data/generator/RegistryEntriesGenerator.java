@@ -76,7 +76,6 @@ class RegistryEntriesGenerator<V> implements Generator {
     final String localizationKey = this.localizationKeyGetter.apply(element);
     return FieldSpec.builder(Types.KEYED_NAMED_HOLDER, Types.keyToFieldName(id.getPath()), Modifier.PUBLIC, Modifier.STATIC, Modifier.FINAL)
       .initializer("new $T($S, $S)", Types.KEYED_NAMED_HOLDER_IMPL, id.toString(), localizationKey)
-      .addJavadoc("$L.", HtmlEscapers.htmlEscaper().escape(I18n.get(localizationKey)))
       .build();
   }
 

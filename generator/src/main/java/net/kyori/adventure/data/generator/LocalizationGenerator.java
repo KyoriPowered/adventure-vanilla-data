@@ -64,11 +64,6 @@ public class LocalizationGenerator implements Generator {
   private static FieldSpec makeField(final String key, final String defaultValue) {
     return FieldSpec.builder(String.class, Types.keyToFieldName(key), Modifier.PUBLIC, Modifier.STATIC, Modifier.FINAL)
       .initializer("$S", key)
-      .addJavadoc("""
-        The localization key '$L'.
-        
-        <p>The default English value for this key is "$L".</p>
-        """, key, HtmlEscapers.htmlEscaper().escape(defaultValue))
       .build();
   }
 }
