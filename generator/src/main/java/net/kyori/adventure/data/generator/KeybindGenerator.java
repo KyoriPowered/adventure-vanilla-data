@@ -27,6 +27,7 @@ import com.squareup.javapoet.FieldSpec;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 import java.util.function.Consumer;
@@ -60,6 +61,9 @@ class KeybindGenerator implements Generator {
       final var visitor = new FindConstructorVisitor(new FindKeybindNamesVisitor(knownKeyMappings::add));
       reader.accept(visitor, ClassReader.SKIP_DEBUG | ClassReader.SKIP_FRAMES);
     }
+
+    // sort fields
+    knownKeyMappings.sort(Comparator.naturalOrder());
 
     // and now generate a class
     for(final String key : knownKeyMappings) {

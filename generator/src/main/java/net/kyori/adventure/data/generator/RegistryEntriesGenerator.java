@@ -71,10 +71,10 @@ class RegistryEntriesGenerator<V> implements Generator {
   public void generate(final Context ctx) throws IOException {
     final var clazz = Types.utilityClass(this.className, this.classJd, SharedConstants.getCurrentVersion().getName());
 
-    this.registry.entrySet().stream()
-      .filter(entry -> this.filter.test(entry.getValue()))
-      .sorted(Comparator.comparing(entry -> entry.getKey().location()))
-      .map(entry -> this.makeField(entry.getValue()))
+    this.registry.stream()
+      .filter(this.filter)
+      .sorted(Comparator.comparing(this.registry::getKey))
+      .map(this::makeField)
       .forEachOrdered(clazz::addField);
 
     ctx.write(clazz.build());
