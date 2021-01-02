@@ -89,7 +89,7 @@ public final class GameDataGenerator {
       try {
         generator.generate(context);
       } catch(final Exception ex) {
-        LOGGER.log(System.Logger.Level.ERROR, "An expected error occurred while generating " + generator.name() + "data", ex);
+        LOGGER.log(System.Logger.Level.ERROR, "An expected error occurred while generating " + generator.name() + " data", ex);
         failed = true;
       }
     }

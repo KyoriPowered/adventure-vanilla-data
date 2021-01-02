@@ -25,6 +25,7 @@ package net.kyori.adventure.data.generator;
 
 import com.squareup.javapoet.FieldSpec;
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import javax.lang.model.element.Modifier;
@@ -69,11 +70,12 @@ class RegistryEntriesGenerator<V> implements Generator {
   @Override
   public void generate(final Context ctx) throws IOException {
     final var clazz = Types.utilityClass(this.className, this.classJd, SharedConstants.getCurrentVersion().getName());
-    for(final var element : this.registry) {
-      if(this.filter.test(element)) {
-        clazz.addField(this.makeField(element));
-      }
-    }
+
+    this.registry.entrySet().stream()
+      .filter(entry -> this.filter.test(entry.getValue()))
+      .sorted(Comparator.comparing(entry -> entry.getKey().location()))
+      .map(entry -> this.makeField(entry.getValue()))
+      .forEachOrdered(clazz::addField);
 
     ctx.write(clazz.build());
   }
