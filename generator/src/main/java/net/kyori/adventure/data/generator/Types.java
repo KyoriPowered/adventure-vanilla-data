@@ -30,6 +30,8 @@ import com.squareup.javapoet.TypeSpec;
 import java.util.Locale;
 import java.util.regex.Pattern;
 import javax.lang.model.element.Modifier;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.KeybindComponent;
 
 final class Types {
   private static final Pattern ILLEGAL_FIELD_CHARACTERS = Pattern.compile("[.-]");
@@ -43,6 +45,10 @@ final class Types {
    * {@code KeyedAndNamedImpl(String idKey, String translationKey)}.
    */
   public static final TypeName KEYED_NAMED_HOLDER_IMPL = ClassName.get(Context.BASE_PACKAGE, "KeyedAndNamedImpl");
+
+  public static final TypeName COMPONENT = ClassName.get(Component.class);
+
+  public static final TypeName KEYBIND_COMPONENT = ClassName.get(KeybindComponent.class);
 
   private Types() {
   }

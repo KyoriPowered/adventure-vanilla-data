@@ -80,7 +80,8 @@ public final class GameDataGenerator {
       new RegistryEntriesGenerator<>("VanillaSounds",
         Registry.SOUND_EVENT,
         "Sound events present in vanilla <em>Minecraft: Java Edition</em> $L.",
-        ev -> "subtitles." + ev.getLocation().getPath())
+        ev -> "subtitles." + ev.getLocation().getPath()),
+      new KeybindGenerator()
     );
 
     // Execute every generator
