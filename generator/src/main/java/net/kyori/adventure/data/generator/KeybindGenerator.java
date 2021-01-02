@@ -44,7 +44,7 @@ class KeybindGenerator implements Generator {
 
   @Override
   public String name() {
-    return null;
+    return "key bindings";
   }
 
   @Override
