@@ -30,6 +30,7 @@ import java.util.function.Predicate;
 import javax.lang.model.element.Modifier;
 import net.minecraft.SharedConstants;
 import net.minecraft.core.Registry;
+import net.minecraft.core.WritableRegistry;
 import net.minecraft.resources.ResourceLocation;
 
 // Generates a constants file based on registry entries
@@ -53,8 +54,16 @@ class RegistryEntriesGenerator<V> implements Generator {
   }
 
   @Override
+  @SuppressWarnings({"unchecked", "rawtypes"})
   public String name() {
-    return "elements of registry " + this.registry.key().location();
+    // This is a bit awkward, but maintains compatibility with pre-1.16 versions
+    final String registryName;
+    if(this.registry instanceof WritableRegistry<?>) {
+      registryName = ((Registry) Registry.REGISTRY).getKey(this.registry).toString();
+    } else {
+      registryName = this.registry.toString();
+    }
+    return "elements of registry " + registryName;
   }
 
   @Override
