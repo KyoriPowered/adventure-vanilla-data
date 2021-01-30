@@ -1,9 +1,7 @@
 pluginManagement {
   repositories {
-    maven("https://maven.fabricmc.net") {
-      name = "fabric"
-    }
     gradlePluginPortal()
+    maven("https://repo-new.spongepowered.org/repository/maven-public/")
   }
 
   plugins {
@@ -13,7 +11,7 @@ pluginManagement {
     id("net.kyori.indra.checkstyle") version indraVersion
     id("net.kyori.indra.publishing") version indraVersion
     id("net.kyori.indra.publishing.sonatype") version indraVersion
-    id("fabric-loom") version "0.5-SNAPSHOT"
+    id("org.spongepowered.gradle.vanilla") version "0.1-SNAPSHOT"
   }
 }
 
