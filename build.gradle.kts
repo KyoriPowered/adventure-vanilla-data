@@ -12,14 +12,6 @@ description = "Constants generated from Minecraft $minecraftVersion for use in A
 allprojects {
   group = "net.kyori"
   version = "$minecraftVersion+b1" // TODO: how should this be versioned?
-
-  repositories {
-    mavenCentral()
-  }
-}
-
-repositories {
-  maven("https://libraries.minecraft.net")
 }
 
 indra {

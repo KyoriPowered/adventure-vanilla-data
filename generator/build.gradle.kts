@@ -5,12 +5,9 @@ plugins {
   id("net.kyori.indra.license-header")
 }
 
-repositories {
-  mavenCentral()
-}
-
 minecraft {
   version(project.property("minecraftVersion") as String)
+  injectRepositories(false)
 }
 
 dependencies {
@@ -23,7 +20,7 @@ dependencies {
 }
 
 configurations.runtimeElements {
-  extendsFrom(configurations.minecraftClasspath.get())
+  extendsFrom(configurations.minecraftClasspath.get(), configurations.minecraft.get())
 }
 
 indra {
