@@ -7,7 +7,6 @@ plugins {
 
 minecraft {
   version(project.property("minecraftVersion") as String)
-  injectRepositories(false)
 }
 
 dependencies {
@@ -20,14 +19,12 @@ dependencies {
 }
 
 configurations.runtimeElements {
-  extendsFrom(configurations.minecraftClasspath.get(), configurations.minecraft.get())
+  extendsFrom(configurations.minecraft.get())
 }
 
 indra {
   javaVersions {
     val generatorTarget: String by project
-    target.set(generatorTarget.toInt())
-
-    strictVersions.set(false)
+    target(generatorTarget.toInt())
   }
 }

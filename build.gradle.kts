@@ -16,7 +16,7 @@ allprojects {
 
 indra {
   github("KyoriPowered", "adventure-vanilla-data") {
-    ci = true
+    ci(true)
   }
   mitLicense()
 }
@@ -27,7 +27,7 @@ val generator by configurations.creating {
   attributes {
     attribute(Category.CATEGORY_ATTRIBUTE, objects.named(Category::class, Category.LIBRARY))
     attribute(Usage.USAGE_ATTRIBUTE, objects.named(Usage::class, Usage.JAVA_RUNTIME))
-    // attribute(TargetJvmVersion.TARGET_JVM_VERSION_ATTRIBUTE, 15) // TODO: Our project metadata doesn't seem to be right?
+    // attribute(TargetJvmVersion.TARGET_JVM_VERSION_ATTRIBUTE, 16) // TODO: Our project metadata doesn't seem to be right?
   }
 }
 
@@ -53,8 +53,8 @@ abstract class GenerateSources : JavaExec() {
   }
 }
 
+val generatorTarget: String by project
 val generateSources by tasks.registering(GenerateSources::class) {
-  val generatorTarget: String by project
   // Execute generator contained in subproject
   classpath = generator
   mainClass.set("net.kyori.adventure.data.generator.GameDataGenerator")
