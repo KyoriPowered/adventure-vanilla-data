@@ -25,7 +25,7 @@ package net.kyori.adventure.data.vanilla;
 
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
-import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
 
 final class KeyedAndNamedImpl implements KeyedAndNamed {
   private final Key key;
@@ -41,12 +41,12 @@ final class KeyedAndNamedImpl implements KeyedAndNamed {
   }
 
   @Override
-  public @NonNull Key key() {
+  public @NotNull Key key() {
     return this.key;
   }
 
   @Override
-  public @NonNull Component asComponent() {
+  public @NotNull Component asComponent() {
     return this.name;
   }
 }
