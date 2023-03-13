@@ -11,7 +11,7 @@ val adventureVersion: String by project
 description = "Constants generated from Minecraft $minecraftVersion for use in Adventure"
 allprojects {
   group = "net.kyori"
-  version = "$minecraftVersion+b1" // TODO: how should this be versioned?
+  version = "1.0.0+$minecraftVersion" // TODO: how should this be versioned?
 }
 
 indra {
@@ -44,7 +44,7 @@ abstract class GenerateSources : JavaExec() {
   /**
    * The directory to write sources to
    */
-  @get:org.gradle.api.tasks.OutputDirectory
+  @get:OutputDirectory
   abstract val outputDirectory: DirectoryProperty
 
   init {

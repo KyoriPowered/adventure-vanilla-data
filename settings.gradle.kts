@@ -1,21 +1,24 @@
 pluginManagement {
   plugins {
-    val indraVersion = "2.0.6"
+    val indraVersion = "3.0.1"
     id("net.kyori.indra") version indraVersion
-    id("net.kyori.indra.license-header") version indraVersion
+    id("net.kyori.indra.licenser.spotless") version indraVersion
     id("net.kyori.indra.checkstyle") version indraVersion
     id("net.kyori.indra.publishing") version indraVersion
     id("net.kyori.indra.publishing.sonatype") version indraVersion
     id("org.spongepowered.gradle.vanilla") version "0.2.1-SNAPSHOT"
   }
-    repositories {
-        gradlePluginPortal()
-        maven(url = "https://repo.spongepowered.org/repository/maven-public/")
-    }
+
+  repositories {
+    mavenCentral()
+    gradlePluginPortal()
+    maven(url = "https://repo.spongepowered.org/repository/maven-public/")
+  }
 }
 
 plugins {
   id("org.spongepowered.gradle.vanilla")
+  id("org.gradle.toolchains.foojay-resolver-convention") version "0.4.0"
 }
 
 rootProject.name = "adventure-vanilla-data"
