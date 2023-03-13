@@ -6,8 +6,12 @@ pluginManagement {
     id("net.kyori.indra.checkstyle") version indraVersion
     id("net.kyori.indra.publishing") version indraVersion
     id("net.kyori.indra.publishing.sonatype") version indraVersion
-    id("org.spongepowered.gradle.vanilla") version "0.2"
+    id("org.spongepowered.gradle.vanilla") version "0.2.1-SNAPSHOT"
   }
+    repositories {
+        gradlePluginPortal()
+        maven(url = "https://repo.spongepowered.org/repository/maven-public/")
+    }
 }
 
 plugins {
