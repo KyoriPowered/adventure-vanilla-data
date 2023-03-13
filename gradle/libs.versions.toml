@@ -1,0 +1,24 @@
+[metadata]
+version = "1.0"
+
+[versions]
+indra = "3.0.1"
+adventure = "4.12.0"
+
+[libraries]
+
+# common
+adventure-api = { module = "net.kyori:adventure-api", version.ref = "adventure" }
+
+# generator
+javapoet = { module = "com.squareup:javapoet", version = "1.13.0" }
+asm = { module = "org.ow2.asm:asm", version = "9.4" }
+
+# build-time
+stylecheck = { module = "ca.stellardrift:stylecheck", version = "0.2.0" }
+
+[plugins]
+indra = { id = "net.kyori.indra", version.ref = "indra" }
+indra-checkstyle = { id = "net.kyori.indra.checkstyle", version.ref = "indra"}
+indra-licenserSpotless = { id = "net.kyori.indra.licenser.spotless", version.ref = "indra" }
+indra-publishing = { id = "net.kyori.indra.publishing", version.ref = "indra" }

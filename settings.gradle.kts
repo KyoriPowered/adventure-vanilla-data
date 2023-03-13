@@ -1,11 +1,5 @@
 pluginManagement {
   plugins {
-    val indraVersion = "3.0.1"
-    id("net.kyori.indra") version indraVersion
-    id("net.kyori.indra.licenser.spotless") version indraVersion
-    id("net.kyori.indra.checkstyle") version indraVersion
-    id("net.kyori.indra.publishing") version indraVersion
-    id("net.kyori.indra.publishing.sonatype") version indraVersion
     id("org.spongepowered.gradle.vanilla") version "0.2.1-SNAPSHOT"
   }
 

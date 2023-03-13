@@ -1,18 +1,17 @@
 plugins {
-  id("net.kyori.indra")
-  id("net.kyori.indra.publishing")
+  alias(libs.plugins.indra)
+  alias(libs.plugins.indra.checkstyle) apply false // classpath hijinks
+  alias(libs.plugins.indra.publishing)
 }
 
 // Project layout
 
+val dataVersion: String by project
 val minecraftVersion: String by project
-val adventureVersion: String by project
 
+group = "net.kyori"
+version = "$dataVersion+$minecraftVersion"
 description = "Constants generated from Minecraft $minecraftVersion for use in Adventure"
-allprojects {
-  group = "net.kyori"
-  version = "1.0.0+$minecraftVersion" // TODO: how should this be versioned?
-}
 
 indra {
   github("KyoriPowered", "adventure-vanilla-data") {
@@ -32,7 +31,7 @@ val generator by configurations.creating {
 }
 
 dependencies {
-  api("net.kyori:adventure-api:$adventureVersion")
+  api(libs.adventure.api)
   generator(project(":generator"))
 }
 
