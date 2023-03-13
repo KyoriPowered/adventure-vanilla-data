@@ -26,7 +26,7 @@ package net.kyori.adventure.data.generator;
 import java.nio.file.Path;
 import java.util.List;
 import net.minecraft.SharedConstants;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.server.Bootstrap;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
@@ -48,7 +48,9 @@ public final class GameDataGenerator {
    * @param args arguments, expected to be {@code <output directory> }
    */
   public static void main(final String[] args) {
+    SharedConstants.tryDetectVersion();
     Bootstrap.bootStrap();
+    Bootstrap.validate();
     LOGGER.log(System.Logger.Level.INFO, "Generating data for Minecraft version {0}", SharedConstants.getCurrentVersion().getName());
 
     // Create a generator context based on arguments
@@ -59,11 +61,11 @@ public final class GameDataGenerator {
     final var generators = List.of(
       // new TranslationGenerator(), // This creates a 33k-line source file that is a large fraction of the output jar... let's expose different things instead.
       new RegistryEntriesGenerator<>("VanillaBlocks",
-        Registry.BLOCK,
+        Registries.BLOCK,
         "Block types present in <em>Minecraft: Java Edition</em> $L.",
         Block::getDescriptionId),
       new RegistryEntriesGenerator<>("VanillaItems",
-        Registry.ITEM,
+        Registries.ITEM,
         """
           Item types present in <em>Minecraft: Java Edition</em> $L.
           
@@ -74,11 +76,11 @@ public final class GameDataGenerator {
         Item::getDescriptionId,
         it -> !(it instanceof BlockItem)),
       new RegistryEntriesGenerator<>("VanillaEntities",
-        Registry.ENTITY_TYPE,
+        Registries.ENTITY_TYPE,
         "Entity types present in <em>Minecraft: Java Edition</em> $L.",
         EntityType::getDescriptionId),
       new RegistryEntriesGenerator<>("VanillaSounds",
-        Registry.SOUND_EVENT,
+        Registries.SOUND_EVENT,
         "Sound events present in vanilla <em>Minecraft: Java Edition</em> $L.",
         ev -> "subtitles." + ev.getLocation().getPath()),
       new KeybindGenerator()
