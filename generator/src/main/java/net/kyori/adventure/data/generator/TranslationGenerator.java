@@ -1,7 +1,7 @@
 /*
  * This file is part of adventure-vanilla-data, licensed under the MIT License.
  *
- * Copyright (c) 2017-2020 KyoriPowered
+ * Copyright (c) 2020 KyoriPowered
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -47,10 +47,10 @@ public class TranslationGenerator implements Generator {
 
     // Language doesn't directly expose information, so we have to read the file ourself
     // The file is a single JSON object composed of string -> string entries, of key -> English value
-    try(final var is = Language.class.getResourceAsStream("/assets/minecraft/lang/en_us.json");
+    try (final var is = Language.class.getResourceAsStream("/assets/minecraft/lang/en_us.json");
         final JsonReader reader = new JsonReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
       reader.beginObject();
-      while(reader.peek() != JsonToken.END_OBJECT) {
+      while (reader.peek() != JsonToken.END_OBJECT) {
         final var key = reader.nextName();
         final var value = reader.nextString();
         type.addField(makeField(key, value));

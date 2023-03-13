@@ -20,6 +20,17 @@ configurations.runtimeElements {
   extendsFrom(configurations.minecraft.get())
 }
 
+spotless {
+  ratchetFrom("origin/main")
+
+  java {
+    endWithNewline()
+    indentWithSpaces(2)
+    trimTrailingWhitespace()
+    importOrderFile(rootProject.file(".spotless/kyori.importorder"))
+  }
+}
+
 indra {
   javaVersions {
     val generatorTarget: String by project

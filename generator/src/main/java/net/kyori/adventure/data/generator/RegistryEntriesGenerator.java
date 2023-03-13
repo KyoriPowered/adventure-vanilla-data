@@ -1,7 +1,7 @@
 /*
  * This file is part of adventure-vanilla-data, licensed under the MIT License.
  *
- * Copyright (c) 2017-2020 KyoriPowered
+ * Copyright (c) 2020-2021 KyoriPowered
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -59,7 +59,7 @@ class RegistryEntriesGenerator<V> implements Generator {
   public String name() {
     // This is a bit awkward, but maintains compatibility with pre-1.16 versions
     final String registryName;
-    if(this.registry instanceof WritableRegistry<?>) {
+    if (this.registry instanceof WritableRegistry<?>) {
       registryName = ((Registry) Registry.REGISTRY).getKey(this.registry).toString();
     } else {
       registryName = this.registry.toString();

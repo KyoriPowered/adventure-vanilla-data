@@ -1,7 +1,7 @@
 /*
  * This file is part of adventure-vanilla-data, licensed under the MIT License.
  *
- * Copyright (c) 2017-2020 KyoriPowered
+ * Copyright (c) 2020-2021 KyoriPowered
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -66,9 +66,9 @@ public final class GameDataGenerator {
         Registry.ITEM,
         """
           Item types present in <em>Minecraft: Java Edition</em> $L.
-          
+
           <p>This list does not include items that have a block associated.</p>
-          
+
           @see VanillaBlocks for block items
           """,
         Item::getDescriptionId,
@@ -86,16 +86,16 @@ public final class GameDataGenerator {
 
     // Execute every generator
     boolean failed = false;
-    for(final Generator generator : generators) {
+    for (final Generator generator : generators) {
       try {
         generator.generate(context);
-      } catch(final Exception ex) {
+      } catch (final Exception ex) {
         LOGGER.log(System.Logger.Level.ERROR, "An expected error occurred while generating " + generator.name() + " data", ex);
         failed = true;
       }
     }
 
-    if(failed) {
+    if (failed) {
       LOGGER.log(System.Logger.Level.INFO, "A failure occurred earlier in generating data. See your log for details.");
       System.exit(1);
     }
